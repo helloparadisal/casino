@@ -1,0 +1,407 @@
+<html><head><base href="https://paradisal-casino.com/games/slots"><title>Paradisal Casino - Crypto Slots</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+:root {
+  --primary: #4A00E0;
+  --secondary: #8E2DE2;
+  --accent: #FFD700;
+  --background: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --text: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: #ffffff;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+nav {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.slot-machine {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(74, 0, 224, 0.3);
+}
+
+.reels-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  background: #000;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid var(--accent);
+}
+
+.reel {
+  width: 120px;
+  height: 120px;
+  background: #1a1a1a;
+  border: 3px solid var(--accent);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.bet-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bet-amount {
+  padding: 0.5rem;
+  width: 100px;
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
+  color: var(--text);
+  border-radius: 5px;
+  text-align: center;
+}
+
+button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.spin-btn {
+  background: var(--accent);
+  color: var(--background);
+  font-size: 1.2rem;
+  padding: 1rem 3rem;
+}
+
+.bet-btn {
+  background: var(--primary);
+  color: var(--text);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-top: 0.5rem;
+}
+
+.paylines {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.paylines h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.symbols-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.symbol-item {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.symbol-value {
+  color: var(--accent);
+  margin-top: 0.5rem;
+}
+
+@keyframes spin {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-600px); }
+}
+
+.spinning {
+  animation: spin 0.5s linear infinite;
+}
+</style>
+</head>
+<body>
+  <div class="stars"></div>
+  <nav>
+    <a href="https://paradisal-casino.com" class="logo">🎲 Paradisal</a>
+    <div class="nav-links">
+      <a href="https://paradisal-casino.com/games">Games</a>
+      <a href="https://paradisal-casino.com/rewards">Rewards</a>
+      <a href="https://paradisal-casino.com/leaderboard">Leaderboard</a>
+      <a href="https://paradisal-casino.com/support">Support</a>
+    </div>
+  </nav>
+
+  <div class="slot-machine">
+    <div class="bet-controls">
+      <label for="bet-amount">Bet Amount:</label>
+      <input type="number" id="bet-amount" class="bet-amount" value="0.1" step="0.1" min="0.1">
+      <button class="bet-btn" onclick="decreaseBet()">-</button>
+      <button class="bet-btn" onclick="increaseBet()">+</button>
+    </div>
+
+    <div class="reels-container">
+      <div class="reel" id="reel1">🎰</div>
+      <div class="reel" id="reel2">🎰</div>
+      <div class="reel" id="reel3">🎰</div>
+    </div>
+
+    <div class="controls">
+      <button class="spin-btn" onclick="spin()">SPIN</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div>Balance</div>
+        <div class="stat-value" id="balance">1.000 ETH</div>
+      </div>
+      <div class="stat-card">
+        <div>Last Win</div>
+        <div class="stat-value" id="last-win">0.000 ETH</div>
+      </div>
+      <div class="stat-card">
+        <div>Jackpot</div>
+        <div class="stat-value" id="jackpot">5.000 ETH</div>
+      </div>
+    </div>
+
+    <div class="paylines">
+      <h3>Winning Combinations</h3>
+      <div class="symbols-grid">
+        <div class="symbol-item">
+          <div>💎💎💎</div>
+          <div class="symbol-value">x100</div>
+        </div>
+        <div class="symbol-item">
+          <div>🎰🎰🎰</div>
+          <div class="symbol-value">x50</div>
+        </div>
+        <div class="symbol-item">
+          <div>🍒🍒🍒</div>
+          <div class="symbol-value">x25</div>
+        </div>
+        <div class="symbol-item">
+          <div>7️⃣7️⃣7️⃣</div>
+          <div class="symbol-value">x20</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Create starry background
+    const starsContainer = document.querySelector('.stars');
+    const numStars = 200;
+
+    function createStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      starsContainer.appendChild(star);
+    }
+
+    for (let i = 0; i < numStars; i++) {
+      createStar();
+    }
+
+    const symbols = ['💎', '🎰', '🍒', '7️⃣', '⭐', '🎲'];
+    let balance = 1.000;
+    let isSpinning = false;
+
+    function updateBalance(amount) {
+      balance = parseFloat((balance + amount).toFixed(3));
+      document.getElementById('balance').textContent = balance.toFixed(3) + ' ETH';
+    }
+
+    function increaseBet() {
+      const betInput = document.getElementById('bet-amount');
+      betInput.value = parseFloat((parseFloat(betInput.value) + 0.1).toFixed(1));
+    }
+
+    function decreaseBet() {
+      const betInput = document.getElementById('bet-amount');
+      if (parseFloat(betInput.value) > 0.1) {
+        betInput.value = parseFloat((parseFloat(betInput.value) - 0.1).toFixed(1));
+      }
+    }
+
+    function getRandomSymbol() {
+      return symbols[Math.floor(Math.random() * symbols.length)];
+    }
+
+    function checkWin(results) {
+      if (results[0] === results[1] && results[1] === results[2]) {
+        const multiplier = symbols.indexOf(results[0]) === 0 ? 100 :
+                          symbols.indexOf(results[0]) === 1 ? 50 :
+                          symbols.indexOf(results[0]) === 2 ? 25 : 20;
+        return multiplier;
+      }
+      return 0;
+    }
+
+    async function spin() {
+      if (isSpinning) return;
+      
+      const betAmount = parseFloat(document.getElementById('bet-amount').value);
+      if (betAmount > balance) {
+        alert('Insufficient balance!');
+        return;
+      }
+
+      isSpinning = true;
+      updateBalance(-betAmount);
+
+      const reels = [
+        document.getElementById('reel1'),
+        document.getElementById('reel2'),
+        document.getElementById('reel3')
+      ];
+
+      // Start spinning animation
+      reels.forEach(reel => {
+        reel.innerHTML = '🎰';
+        reel.classList.add('spinning');
+      });
+
+      // Generate results
+      const results = [
+        getRandomSymbol(),
+        getRandomSymbol(),
+        getRandomSymbol()
+      ];
+
+      // Stop spinning after delay
+      setTimeout(() => {
+        reels.forEach((reel, index) => {
+          reel.classList.remove('spinning');
+          reel.textContent = results[index];
+        });
+
+        // Check for wins
+        const multiplier = checkWin(results);
+        const winAmount = betAmount * multiplier;
+        
+        if (winAmount > 0) {
+          document.getElementById('last-win').textContent = winAmount.toFixed(3) + ' ETH';
+          updateBalance(winAmount);
+          
+          // Celebration animation could be added here
+        } else {
+          document.getElementById('last-win').textContent = '0.000 ETH';
+        }
+
+        isSpinning = false;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
